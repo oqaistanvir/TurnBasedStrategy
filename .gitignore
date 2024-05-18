@@ -1,0 +1,22 @@
+# Ignore all
+*
+# Unignore all with extensions
+!*.*
+# Unignore all dirs
+!*/
+
+/.vscode
+/Logs
+/Packages
+/UserSettings
+/Temp
+*.csproj
+*.sln
+*.meta
+*.editorconfig
+*.json
+*.props
+*.targets
+*.cache
+*.backup
+/Library
