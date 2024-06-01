@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +7,9 @@ public class SpinAction : BaseAction
 {
     private float totalSpinAmountMax = 360f;
     private float totalSpinAmount;
-    public void Spin()
+    public void Spin(Action onActionComplete)
     {
+        this.onActionComplete = onActionComplete;
         isActive = true;
         totalSpinAmount = totalSpinAmountMax;
     }
@@ -23,6 +25,7 @@ public class SpinAction : BaseAction
         if (totalSpinAmount <= 0f)
         {
             isActive = false;
+            onActionComplete();
         }
     }
 }
