@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class SpinAction : BaseAction
 {
-    private float totalSpinAmountMax = 360f;
+    private readonly float totalSpinAmountMax = 360f;
     private float totalSpinAmount;
-    public void Spin(Action onActionComplete)
+    public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
     {
         this.onActionComplete = onActionComplete;
         isActive = true;
@@ -32,5 +32,15 @@ public class SpinAction : BaseAction
     public override string GetActionName()
     {
         return "Spin";
+    }
+
+    public override List<GridPosition> GetValidActionGridPositionList()
+    {
+        GridPosition unitGridPosition = unit.GetGridPosition();
+
+        return new List<GridPosition>
+        {
+            unitGridPosition
+        };
     }
 }
