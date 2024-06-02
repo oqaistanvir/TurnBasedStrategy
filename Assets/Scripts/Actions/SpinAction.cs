@@ -28,4 +28,9 @@ public class SpinAction : BaseAction
             onActionComplete();
         }
     }
+
+    public override string GetActionName()
+    {
+        return "Spin";
+    }
 }
