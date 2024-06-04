@@ -17,8 +17,8 @@ public class MoveAction : BaseAction
 
     public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
     {
-        this.onActionComplete = onActionComplete;
-        isActive = true;
+        ActionStart(onActionComplete);
+
         targetPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
     }
 
@@ -26,7 +26,6 @@ public class MoveAction : BaseAction
     {
         if (!isActive) return;
         float moveSpeed = 4f;
-        float rotateSpeed = 10f;
         float stoppingDistance = 0.1f;
         Vector3 moveDirection = (targetPosition - transform.position).normalized;
         if (Vector3.Distance(targetPosition, transform.position) > stoppingDistance)
@@ -37,9 +36,10 @@ public class MoveAction : BaseAction
         else
         {
             unitAnimator.SetBool(IS_WALKING, false);
-            isActive = false;
-            onActionComplete();
+            ActionComplete();
         }
+
+        float rotateSpeed = 10f;
         transform.forward = Vector3.Lerp(transform.forward, moveDirection, rotateSpeed * Time.deltaTime);
     }
 
