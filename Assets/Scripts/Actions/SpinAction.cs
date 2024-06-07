@@ -9,9 +9,9 @@ public class SpinAction : BaseAction
     private float totalSpinAmount;
     public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
     {
-        ActionStart(onActionComplete);
-
         totalSpinAmount = totalSpinAmountMax;
+
+        ActionStart(onActionComplete);
     }
 
     private void Update()
@@ -45,6 +45,6 @@ public class SpinAction : BaseAction
 
     public override int GetActionPointsCost()
     {
-        return 2;
+        return 1;
     }
 }
