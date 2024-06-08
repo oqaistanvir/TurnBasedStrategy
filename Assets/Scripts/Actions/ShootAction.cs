@@ -157,6 +157,6 @@ public class ShootAction : BaseAction
 
     public int GetTargetCountAtPosition(GridPosition gridPosition)
     {
-        return GetValidActionGridPositionList().Count;
+        return GetValidActionGridPositionList(gridPosition).Count;
     }
 }
