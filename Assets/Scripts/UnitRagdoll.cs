@@ -12,7 +12,8 @@ public class UnitRagdoll : MonoBehaviour
 
         float explosionForce = 300f;
         float explosionRange = 10f;
-        ApplyExplosionToRagdoll(ragdollRootBone, explosionForce, transform.position, explosionRange);
+        Vector3 randomDir = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
+        ApplyExplosionToRagdoll(ragdollRootBone, explosionForce, transform.position + randomDir, explosionRange);
     }
 
     private void MatchAllChildTransforms(Transform root, Transform clone)
