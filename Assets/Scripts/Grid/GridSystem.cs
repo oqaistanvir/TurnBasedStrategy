@@ -70,4 +70,9 @@ public class GridSystem<TGridObject>
     {
         return height;
     }
+
+    public float GetCellSize()
+    {
+        return cellSize;
+    }
 }
