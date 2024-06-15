@@ -58,7 +58,6 @@ public class GridSystemVisual : MonoBehaviour
     {
         UpdateGridVisual();
     }
-
     public void HideAllGridPositions()
     {
         for (int x = 0; x < LevelGrid.Instance.GetWidth(); x++)
@@ -117,6 +116,7 @@ public class GridSystemVisual : MonoBehaviour
 
     private void UpdateGridVisual()
     {
+        if (TurnSystem.Instance.IsGameOver()) return;
         HideAllGridPositions();
 
         Unit selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
@@ -163,5 +163,10 @@ public class GridSystemVisual : MonoBehaviour
         }
         Debug.LogError("Could not find GridVisualTypeMaterial for GridVisualType " + gridVisualType);
         return null;
+    }
+
+    public void ClearGridSystemVisualSingleArray()
+    {
+        gridSystemVisualSingleArray = new GridSystemVisualSingle[0, 0];
     }
 }

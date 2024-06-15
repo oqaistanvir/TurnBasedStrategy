@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class UnitActionSystemUI : MonoBehaviour
 {
+    public static UnitActionSystemUI Instance { get; private set; }
     [SerializeField] private Transform actionButtonPrefab;
     [SerializeField] private Transform actionButtonContainerTransform;
     [SerializeField] private TextMeshProUGUI actionPointsText;
@@ -13,6 +14,7 @@ public class UnitActionSystemUI : MonoBehaviour
     private List<ActionButtonUI> actionButtonUIList;
     private void Awake()
     {
+        Instance = this;
         actionButtonUIList = new();
     }
     private void Start()
@@ -53,6 +55,7 @@ public class UnitActionSystemUI : MonoBehaviour
     }
     private void CreateUnitActionButtons()
     {
+        if (TurnSystem.Instance.IsGameOver()) return;
         foreach (Transform buttonTransform in actionButtonContainerTransform)
         {
             Destroy(buttonTransform.gameObject);
@@ -73,6 +76,7 @@ public class UnitActionSystemUI : MonoBehaviour
 
     private void UpdateSelectedVisual()
     {
+        if (TurnSystem.Instance.IsGameOver()) return;
         foreach (ActionButtonUI actionButtonUI in actionButtonUIList)
         {
             actionButtonUI.UpdateSelectedVisual();
@@ -80,6 +84,7 @@ public class UnitActionSystemUI : MonoBehaviour
     }
     private void UpdateActionPoints()
     {
+        if (TurnSystem.Instance.IsGameOver()) return;
         Unit selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
         actionPointsText.text = "Action Points: " + selectedUnit.GetActionPoints();
     }

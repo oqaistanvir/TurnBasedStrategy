@@ -6,6 +6,10 @@ using UnityEngine;
 public class GrenadeProjectile : MonoBehaviour
 {
     public static event EventHandler OnAnyGrenadeExploded;
+    public static void ResetStaticData()
+    {
+        OnAnyGrenadeExploded = null;
+    }
     [SerializeField] private Transform grenadeExplodeVFXPrefab;
     [SerializeField] private TrailRenderer trailRenderer;
     [SerializeField] private AnimationCurve arcYAnimationCurve;

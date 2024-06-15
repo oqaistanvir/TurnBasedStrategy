@@ -6,6 +6,10 @@ using UnityEngine;
 public class SwordAction : BaseAction
 {
     public static event EventHandler OnAnySwordHit;
+    public static new void ResetStaticData()
+    {
+        OnAnySwordHit = null;
+    }
     public event EventHandler OnSwordActionStarted;
     public event EventHandler OnSwordActionCompleted;
     private enum State

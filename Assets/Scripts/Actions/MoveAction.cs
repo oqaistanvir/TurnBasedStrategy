@@ -20,7 +20,7 @@ public class MoveAction : BaseAction
         Vector3 moveDirection = (targetPosition - transform.position).normalized;
 
         float rotateSpeed = 10f;
-        transform.forward = Vector3.Lerp(transform.forward, moveDirection, rotateSpeed * Time.deltaTime);
+        transform.forward = Vector3.Slerp(transform.forward, moveDirection, rotateSpeed * Time.deltaTime);
 
         if (Vector3.Distance(targetPosition, transform.position) > stoppingDistance)
         {

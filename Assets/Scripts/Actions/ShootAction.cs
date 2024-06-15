@@ -6,6 +6,10 @@ using UnityEngine;
 public class ShootAction : BaseAction
 {
     public static event EventHandler<OnShootEventArgs> OnAnyShoot;
+    public static new void ResetStaticData()
+    {
+        OnAnyShoot = null;
+    }
     public event EventHandler<OnShootEventArgs> OnShoot;
     public class OnShootEventArgs : EventArgs
     {

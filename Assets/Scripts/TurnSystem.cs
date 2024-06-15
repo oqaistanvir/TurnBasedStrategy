@@ -9,9 +9,11 @@ public class TurnSystem : MonoBehaviour
     public event EventHandler OnTurnChanged;
     private int turnNumber = 1;
     private bool isPlayerTurn = true;
+    private bool isGameOver;
     private void Awake()
     {
         Instance = this;
+        isGameOver = false;
     }
     public void NextTurn()
     {
@@ -27,5 +29,13 @@ public class TurnSystem : MonoBehaviour
     public bool IsPlayerTurn()
     {
         return isPlayerTurn;
+    }
+    public bool IsGameOver()
+    {
+        return isGameOver;
+    }
+    public void SetIsGameOver(bool isGameOver)
+    {
+        this.isGameOver = isGameOver;
     }
 }

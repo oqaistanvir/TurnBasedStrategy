@@ -9,6 +9,12 @@ public class Unit : MonoBehaviour
     public static event EventHandler OnAnyActionPointsChanged;
     public static event EventHandler OnAnyUnitSpawned;
     public static event EventHandler OnAnyUnitDeath;
+    public static void ResetStaticData()
+    {
+        OnAnyActionPointsChanged = null;
+        OnAnyUnitSpawned = null;
+        OnAnyUnitDeath = null;
+    }
     private const int ACTION_POINTS_MAX = 2;
     [SerializeField] private bool isEnemy;
     private GridPosition gridPosition;
@@ -121,5 +127,27 @@ public class Unit : MonoBehaviour
     public float GetHealthNormalized()
     {
         return healthSystem.GetHealthNormalized();
+    }
+    private void OnDestroy()
+    {
+        if (!isEnemy)
+        {
+            if (UnitManager.Instance.GetFriendlyUnitList().Count > 0)
+            {
+                Unit newSelectedUnit = UnitManager.Instance.GetFriendlyUnitList()[0];
+                UnitActionSystem.Instance.SetSelectedUnit(newSelectedUnit);
+            }
+            else
+            {
+                GameOverUI.Instance.Show(false);
+            }
+        }
+        else
+        {
+            if (UnitManager.Instance.GetEnemyUnitList().Count == 0)
+            {
+                GameOverUI.Instance.Show(true);
+            }
+        }
     }
 }
