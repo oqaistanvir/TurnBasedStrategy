@@ -64,6 +64,7 @@ public class EnemyAI : MonoBehaviour
     {
         foreach (Unit enemyUnit in UnitManager.Instance.GetEnemyUnitList())
         {
+            if (!enemyUnit.gameObject.activeSelf) continue;
             if (TryTakeEnemyAIAction(enemyUnit, onEnemyAIActionComplete)) return true;
         }
         return false;

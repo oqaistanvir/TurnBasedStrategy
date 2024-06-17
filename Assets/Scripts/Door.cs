@@ -58,4 +58,8 @@ public class Door : MonoBehaviour, IInteractable
         animator.SetBool(IS_OPEN, isOpen);
         Pathfinding.Instance.SetIsWalkableGridPosition(gridPosition, false);
     }
+    public bool IsOpen()
+    {
+        return isOpen;
+    }
 }

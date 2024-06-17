@@ -12,9 +12,11 @@ public class GameOverUI : MonoBehaviour
     [SerializeField] private Button restartButton;
     [SerializeField] private Image backgroundImage;
     [SerializeField] private Color[] backgroundColors;
+    // private Animator animator;
     private void Awake()
     {
         Instance = this;
+        // animator = GetComponent<Animator>();
     }
     private void Start()
     {

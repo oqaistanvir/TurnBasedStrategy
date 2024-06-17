@@ -15,7 +15,7 @@ public class Unit : MonoBehaviour
         OnAnyUnitSpawned = null;
         OnAnyUnitDeath = null;
     }
-    private const int ACTION_POINTS_MAX = 2;
+    private const int ACTION_POINTS_MAX = 3;
     [SerializeField] private bool isEnemy;
     private GridPosition gridPosition;
     private HealthSystem healthSystem;
